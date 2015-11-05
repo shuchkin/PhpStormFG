@@ -12,4 +12,4 @@ c:\Program Files (x86)\JetBrains\PhpStorm 9.0.2\bin\
 
 See how to associate PhpStormFG.exe with file extensions (.php,.js)
 
-http://windows.microsoft.com/en-us/windows/change-default-programs#1TC=windows-7
+http://windows.microsoft.com/en-us/windows/change-file-open-program#1TC=windows-7
