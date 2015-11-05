@@ -1,7 +1,5 @@
 program PhpStormFG;
 
-{$APPTYPE CONSOLE}
-
 {$R *.res}
 
 uses
@@ -35,7 +33,6 @@ begin
 end;
 
 begin
-
   if ParamCount > 0 then
   begin
     FillChar(StartUpInfo, SizeOf(TStartUpInfo), 0);
@@ -53,14 +50,14 @@ begin
       nil, nil, false, NORMAL_PRIORITY_CLASS,
       nil, nil, StartUpInfo, ProcessInfo) then
     begin
-      writeln(SysErrorMessage(GetLastError));
-      readln;
+//      writeln(SysErrorMessage(GetLastError));
+//      readln;
     end;
    end
    else
    begin
-     writeln('Usage: PhpStormFG <filename>');
-     readln;
+//     writeln('Usage: PhpStormFG <filename>');
+//     readln;
    end;
 
   pw := 0;
@@ -73,8 +70,8 @@ begin
   except
     on E: Exception do
     begin
-      Writeln(E.ClassName, ': ', E.Message);
-      ReadLn;
+//      Writeln(E.ClassName, ': ', E.Message);
+//      ReadLn;
     end;
   end;
 end.
