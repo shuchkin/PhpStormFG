@@ -5,14 +5,13 @@ program PhpStormFG;
 {$R *.res}
 
 uses
-  System.SysUtils,WinAPI.Windows,WinAPI.ShellApi;
+  SysUtils,Windows;
 
 var
   pw :hwnd;
-  i: integer;
   StartUpInfo: TStartUpInfo;
   ProcessInfo: TProcessInformation;
-  app,p: string;
+  app: string;
 
 function GetWindowClass(hwnd: HWND): string;
 begin
