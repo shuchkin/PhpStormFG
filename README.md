@@ -7,7 +7,6 @@ https://github.com/shuchkin/PhpStormFG/blob/master/Release/PhpStormFG.exe
 
 
 and copy to PhpStorm folder:
-
 c:\Program Files (x86)\JetBrains\PhpStorm 9.0.2\bin\
 
 
