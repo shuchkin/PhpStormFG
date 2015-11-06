@@ -10,6 +10,7 @@ var
   StartUpInfo: TStartUpInfo;
   ProcessInfo: TProcessInformation;
   app: string;
+  i:integer;
 
 function GetWindowClass(hwnd: HWND): string;
 begin
@@ -44,7 +45,8 @@ begin
       //wShowWindow := SW_SHOWMAXIMIZED;
     end;
 
-    app := '"'+StringReplace( ParamStr(0), 'FG','',[] )+'" '+ParamStr(1);
+    app := '"'+StringReplace( ParamStr(0), 'FG','',[] )+'"';
+    for i:=1 to ParamCount() do app := app + ' ' + ParamStr(i);
 
     if not CreateProcess( nil, PChar(app) ,
       nil, nil, false, NORMAL_PRIORITY_CLASS,
