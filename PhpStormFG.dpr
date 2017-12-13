@@ -8,6 +8,7 @@ uses
 var
   pw :hwnd;
   StartUpInfo: TStartUpInfo;
+  wp: TWindowPlacement;
   ProcessInfo: TProcessInformation;
   app: string;
   i:integer;
@@ -25,7 +26,7 @@ begin
  GetMem(WindowName, 256);
  if GetWindowText(h,WindowName,255) > 0 then
  begin
-   if (pos('PhpStorm ',WindowName) > 0) AND (pos('SunAwtFrame', GetWindowClass(h)) > 0)  then begin
+   if (pos('PhpStorm',WindowName) > 0) AND (pos('SunAwtFrame', GetWindowClass(h)) > 0)  then begin
      pw := h;
      result:=false;
    end;
@@ -34,46 +35,49 @@ begin
 end;
 
 begin
-  if ParamCount > 0 then
+  app := StringReplace( ParamStr(0), 'FG.','.',[rfReplaceAll] );
+
+
+  if FileExists(app) then
   begin
+    app := '"'+app+'"';
+
     FillChar(StartUpInfo, SizeOf(TStartUpInfo), 0);
     with StartUpInfo do
     begin
       cb := SizeOf(TStartUpInfo);
-//      dwFlags := STARTF_USESHOWWINDOW or STARTF_FORCEONFEEDBACK;
+  //      dwFlags := STARTF_USESHOWWINDOW or STARTF_FORCEONFEEDBACK;
         dwFlags := 0;
       //wShowWindow := SW_SHOWMAXIMIZED;
     end;
 
-    app := '"'+StringReplace( ParamStr(0), 'FG','',[] )+'"';
-    for i:=1 to ParamCount() do app := app + ' ' + ParamStr(i);
+    if ParamCount() > 0 then
+    begin
 
-    if not CreateProcess( nil, PChar(app) ,
+      app := app + ' "';
+      for i:=1 to ParamCount() do app := app + ParamStr(i)+' ';
+      app := Copy(app,0,Length(app)-1 ) + '"';
+    end;
+
+//    MessageBox(0, PChar( app ), 'PHPStromFG', MB_OK or MB_TASKMODAL);
+
+    CreateProcess( nil, PChar(app) ,
       nil, nil, false, NORMAL_PRIORITY_CLASS,
-      nil, nil, StartUpInfo, ProcessInfo) then
+      nil, nil, StartUpInfo, ProcessInfo);
+   sleep(10);
+    pw := 0;
+    EnumWindows(@FindFunc,0);
+    if pw <> 0 then
     begin
-//      writeln(SysErrorMessage(GetLastError));
-//      readln;
-    end;
-   end
-   else
-   begin
-//     writeln('Usage: PhpStormFG <filename>');
-//     readln;
-   end;
-
-  pw := 0;
-  try
-   EnumWindows(@FindFunc,0);
-   if pw <> 0 then begin
-     SetForegroundWindow(pw);
-     setfocus(pw);
-   end;
-  except
-    on E: Exception do
-    begin
-//      Writeln(E.ClassName, ': ', E.Message);
-//      ReadLn;
-    end;
+      SetForegroundWindow(pw);
+      setfocus(pw);
+      wp.length := SizeOf(TWindowPlacement);
+      GetWindowPlacement( pw, @wp );
+      if wp.showCmd = SW_SHOWMINIMIZED then ShowWindow(pw, SW_RESTORE);
+    end
+  end
+  else
+  begin
+      MessageBox(0, PChar('Please copy'#13#10+ParamStr(0)+#13#10'to PhpStorm /bin/ !'), 'PHPStromFG', MB_OK or MB_ICONSTOP or MB_TASKMODAL);
   end;
 end.
