@@ -4,7 +4,7 @@ PhpStormFG wrapper for open file and bring to front IDE window
 Download PhpStormFG.exe (2017 icon)<br/>
 https://github.com/shuchkin/PhpStormFG/raw/master/Release2017/PhpStormFG.exe
 
-or PhpStorm64FG.exe (2017 icon)
+or PhpStorm64FG.exe (2017 icon)<br/>
 https://github.com/shuchkin/PhpStormFG/raw/master/Release2017/PhpStorm64FG.exe
 
 
