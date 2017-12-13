@@ -1,20 +1,16 @@
 # PhpStormFG
 PhpStormFG wrapper for open file and bring to front IDE window
 
-Download PhpStormFG.exe
+Download PhpStormFG.exe (2017 icon)
+https://github.com/shuchkin/PhpStormFG/blob/master/Release2017/PhpStormFG.exe
 
-PhpStorm 10 Icon  
-https://github.com/shuchkin/PhpStormFG/blob/master/Release/PhpStormFG.exe
-
-PhpStorm 9 Icon  
-https://github.com/shuchkin/PhpStormFG/blob/master/Release9/PhpStormFG.exe
+or PhpStorm64FG.exe (2017 icon)
+https://github.com/shuchkin/PhpStormFG/blob/master/Release2017/PhpStorm64FG.exe
 
 
 and copy to PhpStorm folder:
 
-c:\Program Files (x86)\JetBrains\PhpStorm 9.0.2\bin\  
-c:\Program Files (x86)\JetBrains\PhpStorm 10.0.3\bin\
+c:\Program Files (x86)\JetBrains\PhpStorm [YOURVERSION]\bin\  
 
-See how to associate PhpStormFG.exe with file extensions (.php,.js)
-
+See how to associate PhpStormFG.exe with file extensions (.php,.js) here
 http://windows.microsoft.com/en-us/windows/change-file-open-program#1TC=windows-7
